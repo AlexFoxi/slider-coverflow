@@ -25,10 +25,9 @@ const customSlider = (name, opts) => {
         slide.classList.add('observed')
       }, duration)
     }
+    console.log(i, slides.length - 1, slide)
 
-    i == slides.length - 1
-      ? (slide.style.opacity = '0')
-      : (slide.style.opacity = '1')
+    i > 3 ? (slide.style.opacity = '0') : (slide.style.opacity = '1')
   }
 
   const setSlidesBase = () => {
