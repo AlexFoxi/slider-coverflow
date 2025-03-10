@@ -124,10 +124,7 @@ p {
 .custom_slider {
   max-width: 144rem;
   width: 100%;
-  height: 50dvh;
-  max-height: 50dvh;
-  min-height: 60rem;
-  margin: auto;
+  height: 100vh;
   background: #ffffff;
   position: relative;
   display: -webkit-box;
@@ -150,7 +147,6 @@ p {
   top: 50%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,81 +175,25 @@ p {
   width: 100%;
   height: 100%;
 }
-.slider-wrapper .slide.observed .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.slider-wrapper .slide:nth-child(2) .content {
+  display: block;
 }
 .slider-wrapper .slide .content {
-  max-width: 60rem;
+  max-width: 30rem;
   width: 100%;
-  max-height: calc(100% - 4rem);
-  display: none;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 1;
-          flex: 1 1 1;
-  padding: 4rem 1rem 4rem 5rem;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  border-radius: 0rem 2rem 2rem 0rem;
-  z-index: 1;
-  -webkit-animation: shadow 0.6s ease-in-out forwards;
-          animation: shadow 0.6s ease-in-out forwards;
-  overflow-y: auto;
-}
-.slider-wrapper .slide .content > div {
-  overflow-y: auto;
-  max-height: 100%;
-  padding-right: 1rem;
-}
-.slider-wrapper .slide .content > div::-webkit-scrollbar {
-  width: 8px;
-}
-.slider-wrapper .slide .content > div::-webkit-scrollbar-track {
-  background: #faedff;
-  border-radius: 4px;
-  margin: 1rem;
-}
-.slider-wrapper .slide .content > div::-webkit-scrollbar-thumb {
-  background: #041f96;
-  border-radius: 4px;
-}
-.slider-wrapper .slide .content > div::-webkit-scrollbar-thumb:hover {
-  background: #02135c;
-}
-.slider-wrapper .slide .content p {
+  padding: 5rem;
   color: #fff;
-  font-size: 2.4rem;
-  line-height: 1.25;
-  letter-spacing: 0.1px;
-  text-align: left;
+  font-size: 1.2rem;
+  display: none;
 }
-
-.arrows {
-  position: absolute;
-  top: calc(50% + 15rem);
-  left: calc(50% + 25rem - 5rem - 2rem);
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-column-gap: 6rem;
-     -moz-column-gap: 6rem;
-          column-gap: 6rem;
+.slider-wrapper .slide .content > * {
+  -webkit-animation: shadow 1s ease-in-out forwards;
+          animation: shadow 1s ease-in-out forwards;
 }
 
 .arrow {
+  position: absolute;
+  bottom: 2rem;
   cursor: pointer;
   border-radius: 0.5rem;
   width: 5rem;
@@ -267,7 +207,9 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: rgba(192, 246, 255, 0.8);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: rgba(51, 178, 201, 0.7);
   font-size: 2rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -276,22 +218,24 @@ p {
 .arrow svg {
   width: 100%;
   height: 100%;
+  stroke: #000;
   stroke-width: 2px;
+  fill: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.arrow svg path {
-  fill: #041f96;
-}
 .arrow:hover {
-  background: #24ceec;
+  background: rgba(16, 99, 114, 0.9);
   -webkit-box-shadow: 0rem 0rem 0.5rem #000000;
           box-shadow: 0rem 0rem 0.5rem #000000;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: translateX(-50%) scale(1.05);
+          transform: translateX(-50%) scale(1.05);
 }
-.arrow:hover svg path {
-  fill: #42018b;
+.arrow.arrow_right {
+  left: calc(50% + 2.5rem);
+}
+.arrow.arrow_left {
+  right: calc(50% + 2.5rem);
 }
 
 @-webkit-keyframes spin {
@@ -318,16 +262,32 @@ p {
 @-webkit-keyframes shadow {
   from {
     opacity: 0;
+    -webkit-transform: translateY(10rem);
+            transform: translateY(10rem);
+    -webkit-filter: blur(3.3rem);
+            filter: blur(3.3rem);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-filter: blur(0);
+            filter: blur(0);
   }
 }
 @keyframes shadow {
   from {
     opacity: 0;
+    -webkit-transform: translateY(10rem);
+            transform: translateY(10rem);
+    -webkit-filter: blur(3.3rem);
+            filter: blur(3.3rem);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-filter: blur(0);
+            filter: blur(0);
   }
 }
