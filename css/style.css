@@ -115,17 +115,20 @@ body.fixed {
           flex-direction: column;
 }
 
-.about-pinguins {
-  width: 100%;
-  padding: 0 1.2rem;
-}
-
 h1 {
   font-size: 4.2rem;
   line-height: 1.2;
   margin-bottom: 2.4rem;
   color: #001757;
   text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.about-penguins {
+  width: 100%;
 }
 
 .custom_slider {
@@ -214,8 +217,8 @@ h1 {
 }
 .slider-wrapper .content > div {
   overflow-y: auto;
-  max-height: 100%;
   padding-right: 1rem;
+  scrollbar-gutter: stable;
 }
 .slider-wrapper .content > div::-webkit-scrollbar {
   width: 8px;
@@ -271,7 +274,6 @@ h1 {
 
 .arrow {
   cursor: pointer;
-  border-radius: 0.5rem;
   width: 5rem;
   height: 4.5rem;
   display: -webkit-box;
@@ -286,6 +288,7 @@ h1 {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   z-index: 5;
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
@@ -297,13 +300,47 @@ h1 {
   transition: all 0.3s ease-in-out;
 }
 .arrow svg path {
-  fill: #2d4a86;
+  fill: #2d3386;
 }
 .arrow:hover {
   -webkit-box-shadow: 0rem 0rem 0.5rem #26363f;
           box-shadow: 0rem 0rem 0.5rem #26363f;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.toggle-visibility {
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 0.5rem;
+}
+.toggle-visibility.hide svg {
+  display: block;
+}
+.toggle-visibility.hide svg.show {
+  display: none;
+}
+.toggle-visibility svg {
+  display: none;
+}
+.toggle-visibility svg.show {
+  display: block;
 }
 
 a.linkIco {
@@ -397,6 +434,7 @@ a.linkIco svg path {
   .slider-wrapper .content {
     padding: 2rem 1rem 2rem 2.5rem;
     border-radius: 0rem 0 2.4rem 0rem;
+    max-height: 26.1rem;
   }
   .slider-wrapper .content .slide-title {
     font-size: 2.4rem;
@@ -423,10 +461,10 @@ a.linkIco svg path {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
-  .arrow.arrow_right {
+  .arrow.arrow_prev {
     border-radius: 0 0.5rem 0.5rem 0;
   }
-  .arrow.arrow_left {
+  .arrow.arrow_next {
     border-radius: 0.5rem 0 0 0.5rem;
   }
   .arrow svg {

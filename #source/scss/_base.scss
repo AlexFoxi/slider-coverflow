@@ -32,3 +32,15 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+h1 {
+  font-size: 4.2rem;
+  line-height: 1.2;
+  margin-bottom: 2.4rem;
+  color: #001757;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}

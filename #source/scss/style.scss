@@ -1,16 +1,7 @@
 @import '_base.scss';
 
-.about-pinguins {
+.about-penguins {
   width: 100%;
-  padding: 0 1.2rem;
-}
-
-h1 {
-  font-size: 4.2rem;
-  line-height: 1.2;
-  margin-bottom: 2.4rem;
-  color: #001757;
-  text-align: center;
 }
 
 .custom_slider {
@@ -86,8 +77,8 @@ h1 {
 
     > div {
       overflow-y: auto;
-      max-height: 100%;
       padding-right: 1rem;
+      scrollbar-gutter: stable;
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -142,7 +133,6 @@ h1 {
 
 .arrow {
   cursor: pointer;
-  border-radius: 0.5rem;
   width: 5rem;
   height: 4.5rem;
   display: flex;
@@ -151,6 +141,7 @@ h1 {
   transition: all 0.3s ease-in-out;
   z-index: 5;
 
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
@@ -161,13 +152,47 @@ h1 {
     transition: all 0.3s ease-in-out;
 
     path {
-      fill: #2d4a86;
+      fill: #2d3386;
     }
   }
 
   &:hover {
     box-shadow: 0rem 0rem 0.5rem #26363f;
     transform: scale(1.1);
+  }
+}
+
+.toggle-visibility {
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 0.5rem;
+
+  &.hide {
+    svg {
+      display: block;
+      &.show {
+        display: none;
+      }
+    }
+  }
+
+  svg {
+    display: none;
+    &.show {
+      display: block;
+    }
   }
 }
 
@@ -212,6 +237,7 @@ a.linkIco {
     opacity: 1;
   }
 }
+
 @media (min-width: 768px) and (max-width: 1240px) {
   .slider-wrapper {
     .slide {
@@ -255,6 +281,8 @@ a.linkIco {
     .content {
       padding: 2rem 1rem 2rem 2.5rem;
       border-radius: 0rem 0 2.4rem 0rem;
+
+      max-height: 26.1rem;
       .slide-title {
         font-size: 2.4rem;
         margin-bottom: 1.6rem;
@@ -283,11 +311,11 @@ a.linkIco {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 
-    &.arrow_right {
+    &.arrow_prev {
       border-radius: 0 0.5rem 0.5rem 0;
     }
 
-    &.arrow_left {
+    &.arrow_next {
       border-radius: 0.5rem 0 0 0.5rem;
     }
 

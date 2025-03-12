@@ -1,6 +1,7 @@
 const customSlider = (name, opts) => {
   const slider = document.querySelector(`.${name}`)
   const sliderWrapper = slider.querySelector('.slider-wrapper')
+  const toggler = slider.querySelector('.toggle-visibility')
 
   const {
     duration,
@@ -10,6 +11,9 @@ const customSlider = (name, opts) => {
     navigation,
     mobScale
   } = opts
+
+  const arrowNext = slider.querySelector(`.${navigation.next}`)
+  const arrowPrev = slider.querySelector(`.${navigation.prev}`)
 
   let isMoving = false
   let isMobile = window.innerWidth <= 768
@@ -77,12 +81,21 @@ const customSlider = (name, opts) => {
   })
 
   const setupNavigation = () => {
-    const arrowNext = slider.querySelector(`.${navigation.next}`)
-    const arrowPrev = slider.querySelector(`.${navigation.prev}`)
-
     arrowNext.addEventListener('click', () => moveHandler('next'))
     arrowPrev.addEventListener('click', () => moveHandler('prev'))
   }
+  // Toggle image viability
+  toggler.addEventListener('click', () => {
+    toggler.classList.toggle('hide')
+    arrowNext.classList.toggle('hidden')
+    arrowPrev.classList.toggle('hidden')
+
+    Array.from(sliderWrapper.children).forEach(slide => {
+      slide.classList.contains('observed')
+        ? slide.querySelector('.content').classList.toggle('hidden')
+        : slide.classList.toggle('hidden')
+    })
+  })
 
   initializeSlides()
   setupNavigation()
