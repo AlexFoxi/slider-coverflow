@@ -7,7 +7,8 @@ const customSlider = (name, opts) => {
     width: slideWidth,
     height: slideHeight,
     space,
-    navigation
+    navigation,
+    mobScale
   } = opts
 
   let isMoving = false
@@ -17,24 +18,24 @@ const customSlider = (name, opts) => {
 
   const actionHelper = (slide, i) => {
     const isWideScreen = !isMobile
+    const factor = isWideScreen ? 1 : mobScale
 
     slide.style.left =
       i > 1
         ? `calc(${isWideScreen ? '50%' : '0rem'} + ${
-            (i - 2) * (slideWidth + space)
+            (i - 2) * (slideWidth / factor + space / 10)
           }rem)`
         : '0rem'
 
-    slide.style.width = i > 1 ? `${slideWidth}rem ` : '100%'
-    slide.style.height = i > 1 ? `${slideHeight}rem` : '100%'
+    slide.style.width = i > 1 ? `${slideWidth / factor}rem ` : '100%'
+    slide.style.height = i > 1 ? `${slideHeight / factor}rem` : '100%'
     slide.style.opacity = i > 3 ? '0' : '1'
-    if (i === 1) {
-      setTimeout(() => slide.classList.add('observed'), duration)
-    }
+
+    if (i === 1) setTimeout(() => slide.classList.add('observed'), duration)
   }
 
-  const setSlidesBase = () => {
-    Array.from(sliderWrapper.children).map((slide, i) => {
+  const initializeSlides = () => {
+    Array.from(sliderWrapper.children).forEach((slide, i) => {
       actionHelper(slide, i)
 
       setTimeout(() => {
@@ -46,13 +47,8 @@ const customSlider = (name, opts) => {
   const slidesActions = () => {
     const slides = Array.from(sliderWrapper.children)
 
-    slides.forEach(slide => {
-      slide.classList.contains('observed') && slide.classList.remove('observed')
-    })
-
-    slides.map((slide, i) => {
-      actionHelper(slide, i)
-    })
+    slides.forEach(slide => slide.classList.remove('observed'))
+    slides.forEach((slide, i) => actionHelper(slide, i))
   }
 
   const moveHandler = direction => {
@@ -76,11 +72,11 @@ const customSlider = (name, opts) => {
     const newIsMobile = window.innerWidth <= 768
     if (newIsMobile !== isMobile) {
       updateIsMobile()
-      setSlidesBase()
+      initializeSlides()
     }
   })
 
-  const mouseEvents = slider => {
+  const setupNavigation = () => {
     const arrowNext = slider.querySelector(`.${navigation.next}`)
     const arrowPrev = slider.querySelector(`.${navigation.prev}`)
 
@@ -88,20 +84,17 @@ const customSlider = (name, opts) => {
     arrowPrev.addEventListener('click', () => moveHandler('prev'))
   }
 
-  const initSlider = slider => {
-    setSlidesBase()
-    mouseEvents(slider)
-  }
-
-  initSlider(slider)
+  initializeSlides()
+  setupNavigation()
 }
 
-window.addEventListener('load', e => {
+window.addEventListener('load', () => {
   customSlider('custom_slider', {
     duration: 500,
     width: 25,
     height: 15,
-    space: 2,
+    space: 20,
+    mobScale: 1.5,
     navigation: {
       next: 'arrow_next',
       prev: 'arrow_prev'
