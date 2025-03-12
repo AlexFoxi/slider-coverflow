@@ -80,6 +80,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-gutter: stable;
+  background: #f4f7ff;
 }
 body.fixed {
   overflow: hidden;
@@ -436,7 +437,7 @@ a.linkIco svg path {
     max-height: 26.1rem;
   }
   .slider-wrapper .content .slide-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     margin-bottom: 1.6rem;
   }
   .slider-wrapper .content p {
