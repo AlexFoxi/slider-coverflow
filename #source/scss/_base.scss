@@ -1,12 +1,13 @@
 @import 'main-scss/_null.scss';
 
-html {
+html,
+body {
   font-size: 10px;
 }
 
 body {
   background-color: white;
-  font-family: 'Montserrat';
+  font-family: 'Open Sans', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-gutter: stable;
@@ -36,7 +37,7 @@ body {
 
 h1 {
   font-size: 4.2rem;
-  line-height: 1.2;
+  line-height: 1.24;
   margin-bottom: 2.4rem;
   color: #001757;
   text-align: center;
