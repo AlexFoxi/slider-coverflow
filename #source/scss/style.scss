@@ -73,7 +73,6 @@
     border-radius: 0rem 2.4rem 2.4rem 0rem;
     z-index: 1;
     animation: shadow 0.6s ease-in-out forwards;
-    overflow-y: auto;
 
     > div {
       overflow-y: auto;
@@ -290,7 +289,7 @@ a.linkIco {
 
       p {
         font-size: 1.6rem;
-        line-height: 1.15;
+        line-height: 1.1;
       }
     }
   }

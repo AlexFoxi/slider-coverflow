@@ -86,15 +86,17 @@ const customSlider = (name, opts) => {
   }
   // Toggle image viability
   toggler.addEventListener('click', () => {
-    toggler.classList.toggle('hide')
-    arrowNext.classList.toggle('hidden')
-    arrowPrev.classList.toggle('hidden')
+    if (isMoving == false) {
+      toggler.classList.toggle('hide')
+      arrowNext.classList.toggle('hidden')
+      arrowPrev.classList.toggle('hidden')
 
-    Array.from(sliderWrapper.children).forEach(slide => {
-      slide.classList.contains('observed')
-        ? slide.querySelector('.content').classList.toggle('hidden')
-        : slide.classList.toggle('hidden')
-    })
+      Array.from(sliderWrapper.children).forEach(slide => {
+        slide.classList.contains('observed')
+          ? slide.querySelector('.content').classList.toggle('hidden')
+          : slide.classList.toggle('hidden')
+      })
+    }
   })
 
   initializeSlides()

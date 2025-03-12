@@ -213,7 +213,6 @@ h1 {
   z-index: 1;
   -webkit-animation: shadow 0.6s ease-in-out forwards;
           animation: shadow 0.6s ease-in-out forwards;
-  overflow-y: auto;
 }
 .slider-wrapper .content > div {
   overflow-y: auto;
@@ -442,7 +441,7 @@ a.linkIco svg path {
   }
   .slider-wrapper .content p {
     font-size: 1.6rem;
-    line-height: 1.15;
+    line-height: 1.1;
   }
   .arrows {
     top: calc(50% + 5rem);
