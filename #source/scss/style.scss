@@ -281,7 +281,11 @@ a.linkIco {
       padding: 2rem 1rem 2rem 2.5rem;
       border-radius: 0rem 0 2.4rem 0rem;
 
-      max-height: 26.1rem;
+      max-height: 26rem;
+      > div {
+        min-height: min(fit-content, 26rem);
+      }
+
       .slide-title {
         font-size: 2.2rem;
         margin-bottom: 1.6rem;

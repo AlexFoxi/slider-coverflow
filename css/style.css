@@ -434,7 +434,12 @@ a.linkIco svg path {
   .slider-wrapper .content {
     padding: 2rem 1rem 2rem 2.5rem;
     border-radius: 0rem 0 2.4rem 0rem;
-    max-height: 26.1rem;
+    max-height: 26rem;
+  }
+  .slider-wrapper .content > div {
+    min-height: min(-webkit-fit-content, 26rem);
+    min-height: min(-moz-fit-content, 26rem);
+    min-height: min(fit-content, 26rem);
   }
   .slider-wrapper .content .slide-title {
     font-size: 2.2rem;
